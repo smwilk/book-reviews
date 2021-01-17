@@ -1,7 +1,9 @@
+const fetch = require(`node-fetch`)
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
     const { createPage } = actions
   
-    const blogPostTemplate = require.resolve(`./src/templates/blogTemplate.js`)
+    const blogPostTemplate = require.resolve(`./src/components/blogTemplate.js`)
   
     const result = await graphql(`
       {
@@ -13,6 +15,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             node {
               frontmatter {
                 slug
+                isbn
+                genre
               }
             }
           }
@@ -33,6 +37,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         context: {
           // additional data can be passed via context
           slug: node.frontmatter.slug,
+          isbn: node.frontmatter.isbn,
+          genre: node.frontmatter.genre
         },
       })
     })
