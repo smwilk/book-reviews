@@ -1,4 +1,5 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
@@ -29,24 +30,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const TopPage = (props) => {
-  const [spacing] = React.useState(2)
-  const [value] = React.useState(2)
-  const classes = useStyles()
-  const books = [
-    {
-      title: "Sapiens",
-      isbn: ""
-    },
-    {
-      title: "Courage to be disliked",
-      isbn: ""
-    },
-    {
-      title: "Buchi boi",
-      isbn: ""
+export default function TopPage() {
+
+  const data = useStaticQuery(graphql`
+    query MyQuery {
+      allMarkdownRemark {
+        nodes {
+          frontmatter {
+            title
+            slug
+            date(formatString: "MMMM DD, YYYY")
+            isbn
+            genre
+            rating
+          }
+        }
+      }
     }
-  ]
+  `)
+
+  console.log(data)
+
+  const [spacing] = React.useState(2)
+  const [rating] = React.useState(2)
+  const classes = useStyles()
+  const books =  data.allMarkdownRemark.nodes.map(node => node.frontmatter)
   return (
     <div id="top-page">
       <Container maxWidth="lg">
@@ -54,14 +62,14 @@ const TopPage = (props) => {
           <Grid container spacing={3}>
             {books.map((book, id) => {
               return(              
-                <Grid item xs={6}>
+                <Grid item xs={6} key={id}>
                   <Card className={classes.root}>
                     <CardContent>
                       <Typography className={classes.title} color="textSecondary" gutterBottom>
-                        {book.title}
+
                       </Typography>
                       <Typography variant="h5" component="h2">
-                        {book.isbn}
+                        {book.title}
                       </Typography>
                       <Typography className={classes.pos} color="textSecondary">
                         adjective
@@ -72,7 +80,7 @@ const TopPage = (props) => {
                         {'"a benevolent smile"'}
                       </Typography>
                     </CardContent>
-                      <Rating name="read-only" value={value} readOnly />
+                      <Rating name="read-only" value={book.rating} readOnly />
                     <CardActions>
                       <Button size="small">Learn More</Button>
                     </CardActions>
@@ -94,5 +102,3 @@ const TopPage = (props) => {
     </div>
   )
 }
-
-export default TopPage

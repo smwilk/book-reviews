@@ -43,3 +43,24 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       })
     })
   }
+
+  exports.sourceNodes = async ({
+    actions: { createNode },
+    createContentDigest,
+  }) => {
+    // get data from GitHub API at build time
+    const result = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:9780062316097`)
+    const resultData = await result.json()
+    // create node for build time data example in the docs
+    createNode({
+      myBook: resultData,
+      // required fields
+      id: `bookshelf`,
+      parent: null,
+      children: [],
+      internal: {
+        type: `bookshelf`,
+        contentDigest: createContentDigest(resultData),
+      },
+    })
+  }
