@@ -12,7 +12,6 @@ import Typography from '@material-ui/core/Typography';
 import Rating from '@material-ui/lab/Rating';
 import './topPage.css'
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 275,
@@ -31,11 +30,12 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function TopPage() {
-
+  // query for book data from Google Books API
   const data = useStaticQuery(graphql`
     query MyQuery {
       allMarkdownRemark {
         nodes {
+          html
           frontmatter {
             title
             slug
@@ -49,38 +49,47 @@ export default function TopPage() {
     }
   `)
 
-  console.log(data)
-
-  const [spacing] = React.useState(2)
-  const [rating] = React.useState(2)
   const classes = useStyles()
-  const books =  data.allMarkdownRemark.nodes.map(node => node.frontmatter)
+
+  function truncateText(text, maxChar) {
+    if (text.length > maxChar) {
+      text = text.substring(0, maxChar)
+      text = text.substring(0, text.lastIndexOf(" ")) + "..."
+    } 
+    return text
+  }
+
   return (
     <div id="top-page">
       <Container maxWidth="lg">
         <div className={classes.root}>
           <Grid container spacing={3}>
-            {books.map((book, id) => {
+            {data.allMarkdownRemark.nodes.map((node, id) => {
+              const truncatedReviewText = truncateText(node.html, 200)
               return(              
                 <Grid item xs={6} key={id}>
                   <Card className={classes.root}>
                     <CardContent>
+                      <Button variant="contained">{node.frontmatter.genre}</Button>
                       <Typography className={classes.title} color="textSecondary" gutterBottom>
-
                       </Typography>
                       <Typography variant="h5" component="h2">
-                        {book.title}
+                        {node.frontmatter.title}
                       </Typography>
                       <Typography className={classes.pos} color="textSecondary">
-                        adjective
+                        <Rating name="read-only" value={node.frontmatter.rating} readOnly />
                       </Typography>
+                      
+                      <Typography
+                        className="blog-post-content"
+                        dangerouslySetInnerHTML={{ __html: truncatedReviewText }}
+                      />
                       <Typography variant="body2" component="p">
                         well meaning and kindly.
                         <br />
                         {'"a benevolent smile"'}
                       </Typography>
                     </CardContent>
-                      <Rating name="read-only" value={book.rating} readOnly />
                     <CardActions>
                       <Button size="small">Learn More</Button>
                     </CardActions>

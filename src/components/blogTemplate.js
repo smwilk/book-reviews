@@ -2,20 +2,19 @@ import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import Button from '@material-ui/core/Button'
 
-export default function Template({
+const Template = ({
   data, // this prop will be injected by the GraphQL query below.
-}) {
+}) => {
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark
    // Client-side Runtime Data Fetching
    const [bookData, setBookData] = useState(undefined)
    useEffect(() => {
-     // get data from GitHub api
      fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${frontmatter.isbn}`)
        .then(response => response.json()) // parse JSON from request
        .then(resultData => {
         setBookData(resultData)
-       }) // set data for the number of stars
+       })
    }, [])
 
   const foundBook = bookData?.items[0]
@@ -41,6 +40,8 @@ export default function Template({
     </div>
   )
 }
+
+export default Template
 
 export const pageQuery = graphql`
   query($slug: String!, $isbn: String!, $genre: String!) {
