@@ -46,14 +46,30 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   exports.sourceNodes = async ({
     actions: { createNode },
+    getNodesByType,
     createContentDigest,
   }) => {
-    // get data from GitHub API at build time
-    const result = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:9780062316097`)
-    const resultData = await result.json()
+    // get already parsed Markdown file data nodes
+    const allMarkdownRemarks = getNodesByType("MarkdownRemark")
+
+    // fetch book information from Google Books API
+    let fetchBookResults = await Promise.all(
+      allMarkdownRemarks.map(async (remark) => { 
+        const result = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${remark.frontmatter.isbn}`)
+        return result.json()
+      })
+    )
+
+    // transfrom the books API data, add isbn for convenience
+    const resultData = fetchBookResults.map((result, i) => {
+      return {
+        ...result.items[0], isbn: allMarkdownRemarks[i].frontmatter.isbn
+      }
+    })
+
     // create node for build time data example in the docs
     createNode({
-      myBook: resultData,
+      bookShelfData: resultData,
       // required fields
       id: `bookshelf`,
       parent: null,
@@ -62,5 +78,19 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         type: `bookshelf`,
         contentDigest: createContentDigest(resultData),
       },
+    })
+
+    resultData.forEach(result => {
+      createNode({
+        bookData: result,
+        // required fields
+        id: result.isbn,
+        parent: `bookshelf`,
+        children: [],
+        internal: {
+          type: `book`,
+          contentDigest: createContentDigest(result),
+        },
+      })
     })
   }

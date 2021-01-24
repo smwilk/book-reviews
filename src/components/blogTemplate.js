@@ -5,23 +5,9 @@ import Button from '@material-ui/core/Button'
 const Template = ({
   data, // this prop will be injected by the GraphQL query below.
 }) => {
-  const { markdownRemark } = data // data.markdownRemark holds your post data
+  const { markdownRemark, book } = data // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark
-   // Client-side Runtime Data Fetching
-   const [bookData, setBookData] = useState(undefined)
-   useEffect(() => {
-     fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${frontmatter.isbn}`)
-       .then(response => response.json()) // parse JSON from request
-       .then(resultData => {
-        setBookData(resultData)
-       })
-   }, [])
-
-  const foundBook = bookData?.items[0]
-
-  if (!foundBook) {
-    return <div>Loading...</div>
-  }
+  const foundBook = book.bookData
   return (
     <div className="blog-post-container">
       <div className="blog-post">
@@ -44,8 +30,8 @@ const Template = ({
 export default Template
 
 export const pageQuery = graphql`
-  query($slug: String!, $isbn: String!, $genre: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $slug }, isbn: { eq: $isbn }, genre: { eq: $genre } }) {
+  query($slug: String!, $isbn: String!) {
+    markdownRemark(frontmatter: { slug: { eq: $slug }, isbn: { eq: $isbn } }) {
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
@@ -53,6 +39,33 @@ export const pageQuery = graphql`
         title
         isbn
         genre
+      }
+    }
+    book(id: {eq: $isbn}) {
+      bookData {
+        isbn
+        volumeInfo {
+          title
+          subtitle
+          publisher
+          publishedDate
+          description
+          pageCount
+          printType
+          averageRating
+          ratingsCount
+          maturityRating
+          allowAnonLogging
+          contentVersion
+          language
+          previewLink
+          infoLink
+          canonicalVolumeLink
+          authors
+          imageLinks {
+            thumbnail
+          }
+        }
       }
     }
   }

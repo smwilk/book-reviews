@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -46,6 +45,33 @@ export default function TopPage() {
           }
         }
       }
+      bookshelf {
+        bookShelfData {
+          isbn
+          volumeInfo {
+            authors
+            title
+            subtitle
+            publisher
+            publishedDate
+            description
+            pageCount
+            printType
+            averageRating
+            ratingsCount
+            maturityRating
+            allowAnonLogging
+            contentVersion
+            language
+            previewLink
+            infoLink
+            canonicalVolumeLink
+            imageLinks {
+              thumbnail
+            }
+          }
+        }
+      }
     }
   `)
 
@@ -64,44 +90,43 @@ export default function TopPage() {
       <Container maxWidth="lg">
         <div className={classes.root}>
           <Grid container spacing={3}>
-            {data.allMarkdownRemark.nodes.map((node, id) => {
+            {data.allMarkdownRemark.nodes.map((node, index) => {
+              const matchingBookApiData = data.bookshelf.bookShelfData[index].volumeInfo
               const truncatedReviewText = truncateText(node.html, 200)
               return(              
-                <Grid item xs={6} key={id}>
+                <Grid item xs={6} key={index}>
                   <Card className={classes.root}>
                     <CardContent>
-                      <Button variant="contained">{node.frontmatter.genre}</Button>
-                      <Typography className={classes.title} color="textSecondary" gutterBottom>
-                      </Typography>
-                      <Typography variant="h5" component="h2">
-                        {node.frontmatter.title}
-                      </Typography>
-                      <Typography className={classes.pos} color="textSecondary">
-                        <Rating name="read-only" value={node.frontmatter.rating} readOnly />
-                      </Typography>
-                      
-                      <Typography
-                        className="blog-post-content"
-                        dangerouslySetInnerHTML={{ __html: truncatedReviewText }}
-                      />
-                      <Typography variant="body2" component="p">
-                        well meaning and kindly.
-                        <br />
-                        {'"a benevolent smile"'}
-                      </Typography>
+                      <Grid container spacing={3}>
+                        <Grid item xs={4} className="book-cover">
+                          <img src={matchingBookApiData.imageLinks.thumbnail} alt="Book cover image"></img>
+                        </Grid>
+                        <Grid item xs={8}>
+                          <Button variant="outlined">{node.frontmatter.genre}</Button>
+                          <Typography className={classes.title} color="textSecondary" gutterBottom>
+                          </Typography>
+                          <Typography variant="h5" component="h2">
+                            {matchingBookApiData.title}
+                          </Typography>
+                              <Rating name="read-only" value={node.frontmatter.rating} readOnly />
+                              <Typography className={classes.pos} color="textSecondary">
+                                {matchingBookApiData.authors.join(", ")}
+                              </Typography>
+                              <div className="review-text">
+                                <Typography
+                                  className="blog-post-content"
+                                  dangerouslySetInnerHTML={{ __html: truncatedReviewText }}
+                                />
+                                <div className="read-more-button">Read full review</div>
+                              </div>
+                        </Grid>
+                      </Grid>
                     </CardContent>
-                    <CardActions>
-                      <Button size="small">Learn More</Button>
-                    </CardActions>
-                </Card>
+                  </Card>
                 </Grid>
                 )
               })
             }
-            <Grid item xs={6}>
-            </Grid>
-            <Grid item xs={6}>
-            </Grid>
           </Grid>
         </div>
       </Container>
