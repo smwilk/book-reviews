@@ -9,6 +9,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Rating from '@material-ui/lab/Rating';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import './topPage.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -29,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function TopPage() {
+  const [value, setValue] = React.useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   // query for book data from Google Books API
   const data = useStaticQuery(graphql`
     query MyQuery {
@@ -89,6 +96,18 @@ export default function TopPage() {
     <div id="top-page">
       <Container maxWidth="lg">
         <div className={classes.root}>
+        <AppBar position="static">
+          <Tabs 
+            value={value}
+            onChange={handleChange}
+            aria-label="simple tabs example"
+            indicatorColor="primary"
+          >
+            <Tab label="PHILOSOPHY"/>
+            <Tab label="SCIENCE"/>
+            <Tab label="HISTORY"/>
+          </Tabs>
+        </AppBar>
           <Grid container spacing={3}>
             {data.allMarkdownRemark.nodes.map((node, index) => {
               const matchingBookApiData = data.bookshelf.bookShelfData[index].volumeInfo
@@ -117,7 +136,9 @@ export default function TopPage() {
                                   className="blog-post-content"
                                   dangerouslySetInnerHTML={{ __html: truncatedReviewText }}
                                 />
-                                <div className="read-more-button">Read full review</div>
+                                  <Link to={"/books/" + data.bookshelf.bookShelfData[index].isbn + "/"} className="link-to-review">
+                                    <div className="read-more-button">Read full review</div>
+                                  </Link>
                               </div>
                         </Grid>
                       </Grid>
@@ -130,9 +151,7 @@ export default function TopPage() {
           </Grid>
         </div>
       </Container>
-      <Link to="/books/9780062316097/">Sapiens: A Brief History of Humankind</Link>
       <br />
-      <Link to="/books/9781501197277/">The Courage to Be Disliked: The Japanese Phenomenon That Shows You How to Change Your Life and Achieve Real Happiness</Link>
     </div>
   )
 }

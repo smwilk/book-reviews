@@ -11,7 +11,7 @@
 #top-page .read-more-button {
     color: #8bc34a;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    margin: 5px 0;
+    margin: 7px 0;
     cursor: pointer;
 }
 
@@ -19,4 +19,15 @@
     color: #257517;
 }
 
+#top-page .link-to-review {
+    text-decoration: none;
+}
 
+#top-page .MuiAppBar-colorPrimary {
+    color: black;
+    background-color: #eef0e7;
+}
+
+#top-page .PrivateTabIndicator-colorPrimary-6 {
+    background-color: #218211;
+}
