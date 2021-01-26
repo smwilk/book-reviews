@@ -1,17 +1,23 @@
+#top-page .top-page-container {
+    padding-top: 2rem;
+}
+
 #top-page .book-cover img {
     width: 100%;
-    height: 260px;
+    height: 16.25rem;
     border-radius: 5%;
+    object-fit: contain;
 }
 
 #top-page .review-text p {
     margin-bottom: 0;
+    /* max-width: 95%; */
 }
 
 #top-page .read-more-button {
     color: #8bc34a;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    margin: 7px 0;
+    margin: 0.55rem 0;
     cursor: pointer;
 }
 

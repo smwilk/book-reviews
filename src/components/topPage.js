@@ -2,10 +2,8 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
 import Grid from '@material-ui/core/Grid'
-import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Rating from '@material-ui/lab/Rating';
@@ -13,23 +11,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import './topPage.css'
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    minWidth: 275,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-}))
 
 export default function TopPage() {
   const [value, setValue] = React.useState(0);
@@ -82,8 +63,6 @@ export default function TopPage() {
     }
   `)
 
-  const classes = useStyles()
-
   function truncateText(text, maxChar) {
     if (text.length > maxChar) {
       text = text.substring(0, maxChar)
@@ -94,56 +73,55 @@ export default function TopPage() {
 
   return (
     <div id="top-page">
-      <Container maxWidth="lg">
-        <div className={classes.root}>
-        <AppBar position="static">
-          <Tabs 
-            value={value}
-            onChange={handleChange}
-            aria-label="simple tabs example"
-            indicatorColor="primary"
-          >
-            <Tab label="PHILOSOPHY"/>
-            <Tab label="SCIENCE"/>
-            <Tab label="HISTORY"/>
-          </Tabs>
-        </AppBar>
-          <Grid container spacing={3}>
+      <AppBar position="static">
+        <Tabs 
+          value={value}
+          onChange={handleChange}
+          aria-label="simple tabs example"
+          indicatorColor="primary"
+        >
+          <Tab label="PHILOSOPHY"/>
+          <Tab label="SCIENCE"/>
+          <Tab label="HISTORY"/>
+        </Tabs>
+      </AppBar>
+      <Container maxWidth="lg" className="top-page-container">
+        <div className="card-container">
+          <Grid container>
             {data.allMarkdownRemark.nodes.map((node, index) => {
               const matchingBookApiData = data.bookshelf.bookShelfData[index].volumeInfo
               const truncatedReviewText = truncateText(node.html, 200)
               return(              
                 <Grid item xs={6} key={index}>
-                  <Card className={classes.root}>
-                    <CardContent>
-                      <Grid container spacing={3}>
+                    <div className="card-inner-container">
+                      <Grid container spacing={1}>
                         <Grid item xs={4} className="book-cover">
                           <img src={matchingBookApiData.imageLinks.thumbnail} alt="Book cover image"></img>
                         </Grid>
-                        <Grid item xs={8}>
+                        <Grid item xs={7}>
                           <Button variant="outlined">{node.frontmatter.genre}</Button>
-                          <Typography className={classes.title} color="textSecondary" gutterBottom>
+                          <Typography className="card-title" color="textSecondary" gutterBottom>
                           </Typography>
                           <Typography variant="h5" component="h2">
                             {matchingBookApiData.title}
                           </Typography>
-                              <Rating name="read-only" value={node.frontmatter.rating} readOnly />
-                              <Typography className={classes.pos} color="textSecondary">
-                                {matchingBookApiData.authors.join(", ")}
-                              </Typography>
-                              <div className="review-text">
-                                <Typography
-                                  className="blog-post-content"
-                                  dangerouslySetInnerHTML={{ __html: truncatedReviewText }}
-                                />
-                                  <Link to={"/books/" + data.bookshelf.bookShelfData[index].isbn + "/"} className="link-to-review">
-                                    <div className="read-more-button">Read full review</div>
-                                  </Link>
-                              </div>
+                          <Rating name="read-only" value={node.frontmatter.rating} readOnly />
+                          <Typography className="card-author" color="textSecondary">
+                            {matchingBookApiData.authors.join(", ")}
+                          </Typography>
+                          <div className="review-text">
+                            <Typography
+                              className="blog-post-content"
+                              dangerouslySetInnerHTML={{ __html: truncatedReviewText }}
+                            />
+                              <Link to={"/books/" + data.bookshelf.bookShelfData[index].isbn + "/"} className="link-to-review">
+                                <div className="read-more-button">Read full review</div>
+                              </Link>
+                          </div>
                         </Grid>
                       </Grid>
-                    </CardContent>
-                  </Card>
+                  </div>
+                  <Divider light />
                 </Grid>
                 )
               })
