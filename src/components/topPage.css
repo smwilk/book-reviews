@@ -37,3 +37,8 @@
 #top-page .PrivateTabIndicator-colorPrimary-6 {
     background-color: #218211;
 }
+
+#top-page .card-divider {
+    margin: 0.5rem;
+    height: 0.1rem;
+}

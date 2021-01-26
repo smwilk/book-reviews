@@ -121,7 +121,7 @@ export default function TopPage() {
                         </Grid>
                       </Grid>
                   </div>
-                  <Divider light />
+                  <Divider light className="card-divider" />
                 </Grid>
                 )
               })
