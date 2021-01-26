@@ -1,0 +1,11 @@
+#primary-header .header-container {
+    min-height: 4rem;
+}
+
+
+#primary-header .header-icon {
+    background-image: url(../images/ladyinaheart.svg);
+}
+
+
+

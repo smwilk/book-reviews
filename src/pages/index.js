@@ -1,8 +1,13 @@
 import React from "react"
 
-import TopPage from "../components/topPage"
+import TopPage from "../components/topPage";
+import Header from "../components/header"
+
 
 const IndexPage = () => (
-  <TopPage />
+  <div>
+    <Header />
+    <TopPage />
+  </div>
 )
 export default IndexPage

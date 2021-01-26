@@ -7,7 +7,6 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Rating from '@material-ui/lab/Rating';
-import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import './topPage.css'
@@ -73,18 +72,20 @@ export default function TopPage() {
 
   return (
     <div id="top-page">
-      <AppBar position="static">
-        <Tabs 
-          value={value}
-          onChange={handleChange}
-          aria-label="simple tabs example"
-          indicatorColor="primary"
-        >
-          <Tab label="PHILOSOPHY"/>
-          <Tab label="SCIENCE"/>
-          <Tab label="HISTORY"/>
-        </Tabs>
-      </AppBar>
+      <Tabs 
+        value={value}
+        onChange={handleChange}
+        aria-label="simple tabs example"
+        indicatorColor="primary"
+      >
+        <Tab label="PHILOSOPHY"/>
+        <Tab label="SCIENCE"/>
+        <Tab label="HISTORY"/>
+        <Tab label="PHILOSOPHY"/>
+        <Tab label="SCIENCE"/>
+        <Tab label="HISTORY"/>
+        <Tab label="HISTORY"/>
+      </Tabs>
       <Container maxWidth="lg" className="top-page-container">
         <div className="card-container">
           <Grid container>
