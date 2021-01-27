@@ -10,6 +10,7 @@ import Rating from '@material-ui/lab/Rating';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import './topPage.css'
+const readingTime = require('../images/reading-time.svg')
 
 export default function TopPage() {
   const [value, setValue] = React.useState(0);
@@ -72,6 +73,29 @@ export default function TopPage() {
 
   return (
     <div id="top-page">
+      <div className="banner-container">
+        <div className="banner-text-container">
+          <div>Find reviews of books</div>
+          <div>I read with my           
+            <svg width="75" height="75" viewBox="0 0 200 100">
+              <g transform="translate(100 100)">
+                <path transform="translate(-50 -50)" fill="tomato" d="M92.71,7.27L92.71,7.27c-9.71-9.69-25.46-9.69-35.18,0L50,14.79l-7.54-7.52C32.75-2.42,17-2.42,7.29,7.27v0 c-9.71,9.69-9.71,25.41,0,35.1L50,85l42.71-42.63C102.43,32.68,102.43,16.96,92.71,7.27z"></path>
+                <animateTransform 
+                  attributeName="transform" 
+                  type="scale" 
+                  values="1; 1.5; 1.25; 1.5; 1.5; 1;" 
+                  dur="1s" 
+                  repeatCount="indefinite"
+                  additive="sum">
+                </animateTransform>
+              </g>
+          </svg>
+          </div>
+        </div>
+        <div className="banner-image-container">
+          <img src={readingTime}/>
+        </div>
+      </div>
       <Tabs 
         value={value}
         onChange={handleChange}

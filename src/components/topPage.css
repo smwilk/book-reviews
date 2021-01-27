@@ -26,7 +26,7 @@ body {
 
 #top-page .read-more-button {
     color: #8bc34a;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     margin: 0.55rem 0;
     cursor: pointer;
 }
@@ -51,4 +51,27 @@ body {
 #top-page .card-divider {
     margin: 0.5rem;
     height: 0.1rem;
+}
+
+#top-page .PrivateTabIndicator-colorPrimary-2 {
+    background-color: rgba(42,42,42,.05)
+}
+
+#top-page .banner-image-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem;
+}
+
+#top-page .banner-image-container img {
+    height: 20rem;
+}
+
+#top-page .banner-text-container {
+    margin: 1rem;
+    font-size: 4rem;
+    float: left;
+    display: inline;
+    width: 49%;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
