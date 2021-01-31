@@ -10,13 +10,15 @@ import Rating from '@material-ui/lab/Rating';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typewriter from 'typewriter-effect';
+import ReadingTimeImageSvg from './reading-time-svg.js';
 import './topPage.css'
 
-const readingTime = require('../images/reading-time.svg')
+// const readingTime = require('../images/reading-time.svg')
 
 export default function TopPage() {
-  const [value, setValue] = useState(0);
-  const [ selectedGenre, setGenre ] = useState("all")
+  const [ value, setValue ] = useState(0);
+  const [ selectedGenre, setGenre ] = useState("all");
+  const [ color, setColor ] = useState("#8bc34a");
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -103,7 +105,7 @@ export default function TopPage() {
           </div>
         </div>
         <div className="banner-image-container">
-          <img src={readingTime}/>
+          <ReadingTimeImageSvg />
         </div>
       </div>
       <Tabs 
