@@ -40,7 +40,7 @@ body {
 }
 
 #top-page .MuiTabs-flexContainer {
-    color: black;
+    color: #444444;
     background-color: #F5F6F5;
 }
 
@@ -60,18 +60,27 @@ body {
 #top-page .banner-image-container {
     display: flex;
     justify-content: flex-end;
-    margin: 1rem;
+    margin: 1rem 0;
 }
 
 #top-page .banner-image-container img {
-    height: 20rem;
+    height: 18rem;
 }
 
 #top-page .banner-text-container {
     margin: 1rem;
-    font-size: 4rem;
+    font-size: 2.5rem;
     float: left;
     display: inline;
-    width: 49%;
+    width: 60%;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #444444;
+}
+
+#top-page .Typewriter {
+    display: inline;
+}
+
+#top-page .Typewriter .Typewriter__wrapper {
+    color: #8bc34a;
 }

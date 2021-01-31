@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
 import Grid from '@material-ui/core/Grid'
@@ -9,11 +9,14 @@ import Typography from '@material-ui/core/Typography';
 import Rating from '@material-ui/lab/Rating';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Typewriter from 'typewriter-effect';
 import './topPage.css'
+
 const readingTime = require('../images/reading-time.svg')
 
 export default function TopPage() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const [ selectedGenre, setGenre ] = useState("all")
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -63,6 +66,12 @@ export default function TopPage() {
     }
   `)
 
+  const genreMap = new Set()
+  data.allMarkdownRemark.nodes.forEach((node, index) => {
+    genreMap.add(node.frontmatter.genre)
+  })
+  const genreArr = ["all", ...genreMap]
+
   function truncateText(text, maxChar) {
     if (text.length > maxChar) {
       text = text.substring(0, maxChar)
@@ -71,25 +80,26 @@ export default function TopPage() {
     return text
   }
 
+  function filterByGenre(genre) {
+    setGenre(genre)
+  }
+  
+  const filteredData = selectedGenre === "all" ? data.allMarkdownRemark.nodes : data.allMarkdownRemark.nodes.filter(node => node.frontmatter.genre === selectedGenre)
+  
   return (
     <div id="top-page">
       <div className="banner-container">
         <div className="banner-text-container">
-          <div>Find reviews of books</div>
-          <div>I read with my           
-            <svg width="75" height="75" viewBox="0 0 200 100">
-              <g transform="translate(100 100)">
-                <path transform="translate(-50 -50)" fill="tomato" d="M92.71,7.27L92.71,7.27c-9.71-9.69-25.46-9.69-35.18,0L50,14.79l-7.54-7.52C32.75-2.42,17-2.42,7.29,7.27v0 c-9.71,9.69-9.71,25.41,0,35.1L50,85l42.71-42.63C102.43,32.68,102.43,16.96,92.71,7.27z"></path>
-                <animateTransform 
-                  attributeName="transform" 
-                  type="scale" 
-                  values="1; 1.5; 1.25; 1.5; 1.5; 1;" 
-                  dur="1s" 
-                  repeatCount="indefinite"
-                  additive="sum">
-                </animateTransform>
-              </g>
-          </svg>
+          <div>Hello! My name is Minami.</div>
+          <div>I like to read books about &nbsp;
+          <Typewriter
+            className="type-writer"
+            options={{
+              strings: ['Technology', 'History', 'Science', 'Nutrition', 'Philosophy'],
+              autoStart: true,
+              loop: true,
+            }}
+          />
           </div>
         </div>
         <div className="banner-image-container">
@@ -102,19 +112,21 @@ export default function TopPage() {
         aria-label="simple tabs example"
         indicatorColor="primary"
       >
-        <Tab label="PHILOSOPHY"/>
-        <Tab label="SCIENCE"/>
-        <Tab label="HISTORY"/>
-        <Tab label="PHILOSOPHY"/>
-        <Tab label="SCIENCE"/>
-        <Tab label="HISTORY"/>
-        <Tab label="HISTORY"/>
+        {genreArr.map((genre, index) => {
+          return (
+          <Tab
+            label={genre}
+            key={index}
+            onClick={() => filterByGenre(genre)}
+          />
+          )
+        })}
       </Tabs>
       <Container maxWidth="lg" className="top-page-container">
         <div className="card-container">
           <Grid container>
-            {data.allMarkdownRemark.nodes.map((node, index) => {
-              const matchingBookApiData = data.bookshelf.bookShelfData[index].volumeInfo
+            {filteredData.map((node, index) => {
+              const matchingBookApiData = data.bookshelf.bookShelfData.find(book => book.isbn === node.frontmatter.isbn).volumeInfo
               const truncatedReviewText = truncateText(node.html, 200)
               return(              
                 <Grid item xs={6} key={index}>

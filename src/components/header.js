@@ -2,15 +2,15 @@
 import React from "react"
 import { Link } from "gatsby"
 import './header.css'
-const ladyinaheart = require('../images/ladyinaheart.svg')
+import BrushIcon from '@material-ui/icons/Brush';
 
 const Header = () => (
   <header>
     <div id="primary-header">
       <div className="header-container">
         <Link to="/" >
-          <img src={ladyinaheart} className="header-icon" />
-          Read with Soul
+          <BrushIcon />
+          Humble Book Review
         </Link>
       </div>
     </div>
