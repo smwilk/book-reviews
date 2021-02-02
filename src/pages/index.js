@@ -1,13 +1,12 @@
 import React from "react"
 
 import TopPage from "../components/topPage";
-import Header from "../components/header"
+import Header from "../components/header";
 
 import "./global.css"
 
-
 const IndexPage = () => (
-  <div id="global">
+  <div id="index">
     <Header />
     <TopPage />
   </div>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import Button from '@material-ui/core/Button'
+import Header from "./header"
+import './blogTemplate.css'
 
 const Template = ({
   data, // this prop will be injected by the GraphQL query below.
@@ -9,8 +11,16 @@ const Template = ({
   const { frontmatter, html } = markdownRemark
   const foundBook = book.bookData
   return (
-    <div className="blog-post-container">
+    <div id="blog-post-container">
+      <Header />
       <div className="blog-post">
+        <div
+          className="background-banner-container"
+          style={{backgroundImage: `url(${foundBook.volumeInfo.imageLinks.thumbnail})`}}
+        >
+          <div className="background-banner">
+          </div>
+        </div>
         <h1>{frontmatter.title}</h1>
         <h2>{frontmatter.date}</h2>
         <div

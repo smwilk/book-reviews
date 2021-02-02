@@ -10,15 +10,13 @@ import Rating from '@material-ui/lab/Rating';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typewriter from 'typewriter-effect';
-import ReadingTimeImageSvg from './reading-time-svg.js';
 import './topPage.css'
 
-// const readingTime = require('../images/reading-time.svg')
+const readingTime = require('../images/reading-time.svg')
 
 export default function TopPage() {
   const [ value, setValue ] = useState(0);
   const [ selectedGenre, setGenre ] = useState("all");
-  const [ color, setColor ] = useState("#8bc34a");
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -87,7 +85,6 @@ export default function TopPage() {
   }
   
   const filteredData = selectedGenre === "all" ? data.allMarkdownRemark.nodes : data.allMarkdownRemark.nodes.filter(node => node.frontmatter.genre === selectedGenre)
-  
   return (
     <div id="top-page">
       <div className="banner-container">
@@ -99,13 +96,13 @@ export default function TopPage() {
             options={{
               strings: ['Technology', 'History', 'Science', 'Nutrition', 'Philosophy'],
               autoStart: true,
-              loop: true,
+              loop: true
             }}
           />
           </div>
         </div>
         <div className="banner-image-container">
-          <ReadingTimeImageSvg />
+          <img src={readingTime} alt="reading-woman"/>
         </div>
       </div>
       <Tabs 
@@ -135,7 +132,7 @@ export default function TopPage() {
                     <div className="card-inner-container">
                       <Grid container spacing={1}>
                         <Grid item xs={4} className="book-cover">
-                          <img src={matchingBookApiData.imageLinks.thumbnail} alt="Book cover image"></img>
+                          <img src={matchingBookApiData.imageLinks.thumbnail} alt="Book cover"></img>
                         </Grid>
                         <Grid item xs={7}>
                           <Button variant="outlined">{node.frontmatter.genre}</Button>
