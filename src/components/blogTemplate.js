@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import Button from '@material-ui/core/Button'
 import Header from "./header"
+import Grid from '@material-ui/core/Grid';
 import './blogTemplate.css'
 
 const Template = ({
@@ -14,22 +15,31 @@ const Template = ({
     <div id="blog-post-container">
       <Header />
       <div className="blog-post">
-        <div
-          className="background-banner-container"
-          style={{backgroundImage: `url(${foundBook.volumeInfo.imageLinks.thumbnail})`}}
-        >
-          <div className="background-banner">
-          </div>
+        <div class="hero-content">
+          <Grid container spacing={1}>
+            <Grid item xs={3} className="book-thumbnail">
+              <img src={foundBook.volumeInfo.imageLinks.thumbnail} alt="book-cover" class="thumbnail" />
+            </Grid>
+            <Grid item xs={8} className="book-description">
+              <h1>{frontmatter.title}</h1>
+              <h2>{frontmatter.date}</h2>
+            </Grid>
+          </Grid>
         </div>
-        <h1>{frontmatter.title}</h1>
-        <h2>{frontmatter.date}</h2>
+          <div className="background-banner-container">
+            <div
+              className="background-banner-image"
+              style={{backgroundImage: `url(${foundBook.volumeInfo.imageLinks.thumbnail})`}}
+            >
+              <div className="background-banner-layer" />
+            </div>
+          </div>
         <div
           className="blog-post-content"
           dangerouslySetInnerHTML={{ __html: html }}
         />
         <div>
           {foundBook.volumeInfo.title}
-          <img src={foundBook.volumeInfo.imageLinks.thumbnail} alt="" class="thumbnail" />
           <Button variant="contained">{frontmatter.genre}</Button>
         </div>
       </div>

@@ -1,8 +1,54 @@
-#blog-post-container .background-banner-container {
-    padding: 60px;
-    text-align: center;
-    color: white;
-    font-size: 30px;
-    background: green;
+#blog-post-container {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+#blog-post-container .hero-content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 0;
+    height: 15rem;
+}
+
+#blog-post-container .hero-content .book-description {
+    position: relative;
+    z-index: 100;
+    color: white;
+}
+
+#blog-post-container .hero-content .book-thumbnail {
+    text-align: center;
+    z-index: 100;
+}
+
+#blog-post-container .hero-content .book-thumbnail > img {
+    height: 14rem;
+}
+
+#blog-post-container .background-banner-container {
+    width: 100%;
+    height: 20rem;
+    overflow: hidden;
+    position: absolute;
+    top: 4.7rem;
+}
+
+#blog-post-container .background-banner-image {
+    padding: 60px;
+    text-align: center;
+    background-size: 100%;
+    height: 100%;
+    background-position: 50%;
+    left: 0;
+    height: (100% + 80px);
+    filter: blur(10px); 
+    -webkit-filter: blur(10px);
+}
+
+#blog-post-container .background-banner-layer {
+    background-color: rgba(42,42,42,.5);
+    position: absolute;
+    top: 0;
+    left: -1rem;
+    width: 120%;
+    height: 100%;
+}
