@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
+import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
 import Divider from '@material-ui/core/Divider';
@@ -12,11 +13,27 @@ import Tab from '@material-ui/core/Tab';
 import Typewriter from 'typewriter-effect';
 import './topPage.css'
 
-const readingTime = require('../images/reading-time.svg')
+const readingTime = require('../images/reading-time.svg');
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+    button: {
+      textTransform: "none"
+    }
+  },
+});
 
 export default function TopPage() {
   const [ value, setValue ] = useState(0);
-  const [ selectedGenre, setGenre ] = useState("all");
+  const [ selectedGenre, setGenre ] = useState("All");
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -70,7 +87,7 @@ export default function TopPage() {
   data.allMarkdownRemark.nodes.forEach((node, index) => {
     genreMap.add(node.frontmatter.genre)
   })
-  const genreArr = ["all", ...genreMap]
+  const genreArr = ["All", ...genreMap]
 
   function truncateText(text, maxChar) {
     if (text.length > maxChar) {
@@ -84,13 +101,14 @@ export default function TopPage() {
     setGenre(genre)
   }
   
-  const filteredData = selectedGenre === "all" ? data.allMarkdownRemark.nodes : data.allMarkdownRemark.nodes.filter(node => node.frontmatter.genre === selectedGenre)
+  const filteredData = selectedGenre === "All" ? data.allMarkdownRemark.nodes : data.allMarkdownRemark.nodes.filter(node => node.frontmatter.genre === selectedGenre)
   return (
+  <ThemeProvider theme={theme}>
     <div id="top-page">
       <div className="banner-container">
         <div className="banner-text-container">
           <div>Hello! My name is Minami.</div>
-          <div>I like to read books about &nbsp;
+          <div>I read books about</div>
           <Typewriter
             className="type-writer"
             options={{
@@ -99,7 +117,6 @@ export default function TopPage() {
               loop: true
             }}
           />
-          </div>
         </div>
         <div className="banner-image-container">
           <img src={readingTime} alt="reading-woman"/>
@@ -130,11 +147,11 @@ export default function TopPage() {
               return(              
                 <Grid item xs={6} key={index}>
                     <div className="card-inner-container">
-                      <Grid container spacing={1}>
+                      <Grid container spacing={2}>
                         <Grid item xs={4} className="book-cover">
                           <img src={matchingBookApiData.imageLinks.thumbnail} alt="Book cover"></img>
                         </Grid>
-                        <Grid item xs={7}>
+                        <Grid item xs={6}>
                           <Button variant="outlined">{node.frontmatter.genre}</Button>
                           <Typography className="card-title" color="textSecondary" gutterBottom>
                           </Typography>
@@ -166,6 +183,7 @@ export default function TopPage() {
         </div>
       </Container>
       <br />
-    </div>
+      </div>
+    </ThemeProvider>
   )
 }

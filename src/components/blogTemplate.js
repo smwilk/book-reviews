@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Button from '@material-ui/core/Button'
 import Header from "./header"
 import Grid from '@material-ui/core/Grid';
+import Rating from '@material-ui/lab/Rating';
 import './blogTemplate.css'
 
 const Template = ({
@@ -13,7 +14,9 @@ const Template = ({
   const foundBook = book.bookData
   return (
     <div id="blog-post-container">
-      <Header />
+      <Header>
+        <a href="#" class="previous round">&#8249;</a>
+      </Header>
       <div className="blog-post">
         <div class="hero-content">
           <Grid container spacing={1}>
@@ -21,8 +24,10 @@ const Template = ({
               <img src={foundBook.volumeInfo.imageLinks.thumbnail} alt="book-cover" class="thumbnail" />
             </Grid>
             <Grid item xs={8} className="book-description">
-              <h1>{frontmatter.title}</h1>
-              <h2>{frontmatter.date}</h2>
+              <h1 className="book-title">{frontmatter.title}</h1>
+              <h2 className="book-authors">By {foundBook.volumeInfo.authors.join(", ")}</h2>
+              <Rating name="read-only" value={frontmatter.rating} readOnly />
+              <Button variant="contained" className="book-genre">{frontmatter.genre}</Button>
             </Grid>
           </Grid>
         </div>
@@ -34,13 +39,14 @@ const Template = ({
               <div className="background-banner-layer" />
             </div>
           </div>
-        <div
-          className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-        <div>
-          {foundBook.volumeInfo.title}
-          <Button variant="contained">{frontmatter.genre}</Button>
+        <div className="blog-post-main">
+          <h2>{frontmatter.date}</h2>
+          <div
+            className="blog-post-content"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+          <div>
+          </div>
         </div>
       </div>
     </div>
@@ -59,6 +65,7 @@ export const pageQuery = graphql`
         title
         isbn
         genre
+        rating
       }
     }
     book(id: {eq: $isbn}) {

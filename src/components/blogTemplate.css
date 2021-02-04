@@ -15,6 +15,20 @@
     color: white;
 }
 
+#blog-post-container .hero-content .book-description .book-title {
+    margin-top: 0;
+}
+
+#blog-post-container .hero-content .book-description .book-genre {
+    text-transform: none;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    box-shadow: none;
+    background-color: 	#606060;
+    color: white;
+    top: -0.4rem;
+    margin-left: 0.65rem;
+}
+
 #blog-post-container .hero-content .book-thumbnail {
     text-align: center;
     z-index: 100;
@@ -26,7 +40,7 @@
 
 #blog-post-container .background-banner-container {
     width: 100%;
-    height: 20rem;
+    height: 22rem;
     overflow: hidden;
     position: absolute;
     top: 4.7rem;
@@ -51,4 +65,20 @@
     left: -1rem;
     width: 120%;
     height: 100%;
+}
+
+#blog-post-container .blog-post-main {
+    margin: 0 10rem;
+    font-size: 1rem;
+    font-family:  -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+    color: #444444;
+    padding-top: 4rem;
+}
+
+
+@media only screen and (max-width: 1096px) {
+
 }
