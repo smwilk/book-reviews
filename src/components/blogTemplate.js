@@ -4,6 +4,8 @@ import Button from '@material-ui/core/Button'
 import Header from "./header"
 import Grid from '@material-ui/core/Grid';
 import Rating from '@material-ui/lab/Rating';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { Link } from "gatsby"
 import './blogTemplate.css'
 
 const Template = ({
@@ -19,6 +21,9 @@ const Template = ({
       </Header>
       <div className="blog-post">
         <div class="hero-content">
+          <Link to="/" className="back-button">
+            <ArrowBackIcon/>
+          </Link>
           <Grid container spacing={1}>
             <Grid item xs={3} className="book-thumbnail">
               <img src={foundBook.volumeInfo.imageLinks.thumbnail} alt="book-cover" class="thumbnail" />

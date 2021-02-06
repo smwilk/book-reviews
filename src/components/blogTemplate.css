@@ -7,6 +7,7 @@
     margin: 0 auto;
     padding: 48px 0;
     height: 15rem;
+    position: relative;
 }
 
 #blog-post-container .hero-content .book-description {
@@ -76,4 +77,26 @@
     letter-spacing: 0.00938em;
     color: #444444;
     padding-top: 4rem;
+}
+
+#blog-post-container .back-button {
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: -1.5rem;
+    top: 3rem;
+    z-index: 100;
+    color: white;
+    cursor: pointer;
+  }
+
+#blog-post-container .back-button svg {
+    height: 1.8rem;
+    width: 1.8rem;
+    position: relative;
+    top: 0.3rem;
+    left: 0.3rem;
 }

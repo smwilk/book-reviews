@@ -34,6 +34,10 @@ body {
     color: #257517;
 }
 
+#top-page .card-inner-container {
+    height: 100%;
+}
+
 #top-page .link-to-review {
     text-decoration: none;
 }
@@ -107,6 +111,24 @@ body {
         display: block;
     }
 
+    #top-page .MuiGrid-spacing-xs-2 {
+        margin: 1rem 0;
+    }
 
+    #top-page .banner-image-container img {
+        width: 100%;
+    }
+    
+    #top-page .card-container {
+        height: 100%;
+    }
 
+    #top-page .card-inner-container {
+        height: auto;
+    }
+
+    #top-page .card-text-container {
+        max-width: 60%;
+        flex-basis: unset;
+    }
 }
