@@ -1,33 +1,32 @@
 #primary-header {
-    position: relative;
-    min-height: 4rem;
-    padding: 0.4rem;
-    background-color: white;
-    z-index: 100;
+  position: relative;
+  min-height: 4rem;
+  padding: 0.4rem;
+  background-color: white;
+  z-index: 100;
 }
 
 #primary-header .MuiSvgIcon-root {
-    font-size: 1.8rem;
-    margin: 0 0.2rem 0 0;
-    color: #8bc34a;
+  font-size: 1.8rem;
+  margin: 0 0.2rem 0 0;
+  color: #8bc34a;
 }
 
 #primary-header .header-container {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    left: 1.5rem;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 1.5rem;
 }
 
 #primary-header .header-container a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    color: #444444;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 1.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #444;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.8rem;
 }
-

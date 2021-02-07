@@ -1,126 +1,126 @@
 body {
-    margin: 0;
+  margin: 0;
 }
 
 #top-page {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 73rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 73rem;
 }
 
 #top-page .top-page-container {
-    padding-top: 2rem;
+  padding-top: 2rem;
 }
 
 #top-page .book-cover img {
-    width: 100%;
-    height: 16.25rem;
-    border-radius: 5%;
-    object-fit: contain;
+  width: 100%;
+  height: 16.25rem;
+  border-radius: 5%;
+  object-fit: contain;
 }
 
 #top-page .review-text p {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 #top-page .read-more-button {
-    color: #8bc34a;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    margin: 0.55rem 0;
-    cursor: pointer;
+  color: #8bc34a;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0.55rem 0;
+  cursor: pointer;
 }
 
 #top-page .read-more-button:hover {
-    color: #257517;
+  color: #257517;
 }
 
 #top-page .card-inner-container {
-    height: 100%;
+  height: 100%;
 }
 
 #top-page .link-to-review {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 #top-page .MuiTabs-flexContainer {
-    color: #444444;
-    background-color: #F5F6F5;
+  color: #444;
+  background-color: #f5f6f5;
 }
 
 #top-page .MuiTabs-indicator {
-    background-color: #c0dead;
+  background-color: #c0dead;
 }
 
 #top-page .card-divider {
-    margin: 0.5rem;
-    height: 0.1rem;
+  margin: 0.5rem;
+  height: 0.1rem;
 }
 
 #top-page .banner-container {
-    margin: 0 3rem;
+  margin: 0 3rem;
 }
 
 #top-page .banner-image-container {
-    display: flex;
-    justify-content: flex-end;
-    margin: 1rem 0;
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 0;
 }
 
 #top-page .banner-image-container img {
-    height: 18rem;
+  height: 18rem;
 }
 
 #top-page .banner-text-container {
-    margin: 1rem;
-    font-size: 2.5rem;
-    float: left;
-    display: inline;
-    width: 60%;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #444444;
+  margin: 1rem;
+  font-size: 2.5rem;
+  float: left;
+  display: inline;
+  width: 60%;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #444;
 }
 
 #top-page .Typewriter {
-    display: inline;
+  display: inline;
 }
 
 #top-page .Typewriter .Typewriter__wrapper {
-    color: #8bc34a;
+  color: #8bc34a;
 }
 
 @media only screen and (max-width: 1056px) {
-    #top-page .banner-image-container {
-        display: block;
-        text-align: center;
-    }
+  #top-page .banner-image-container {
+    display: block;
+    text-align: center;
+  }
 
-    #top-page .banner-text-container {
-        text-align: center;
-        float: none;
-    }
+  #top-page .banner-text-container {
+    text-align: center;
+    float: none;
+  }
 
-    #top-page .Typewriter {
-        display: block;
-    }
+  #top-page .Typewriter {
+    display: block;
+  }
 
-    #top-page .MuiGrid-spacing-xs-2 {
-        margin: 1rem 0;
-    }
+  #top-page .MuiGrid-spacing-xs-2 {
+    margin: 1rem 0;
+  }
 
-    #top-page .banner-image-container img {
-        width: 100%;
-    }
-    
-    #top-page .card-container {
-        height: 100%;
-    }
+  #top-page .banner-image-container img {
+    width: 100%;
+  }
 
-    #top-page .card-inner-container {
-        height: auto;
-    }
+  #top-page .card-container {
+    height: 100%;
+  }
 
-    #top-page .card-text-container {
-        max-width: 60%;
-        flex-basis: unset;
-    }
+  #top-page .card-inner-container {
+    height: auto;
+  }
+
+  #top-page .card-text-container {
+    max-width: 60%;
+    flex-basis: unset;
+  }
 }

@@ -1,179 +1,177 @@
 #blog-post-container {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 #blog-post-container .hero-content {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 48px 0;
-    height: 15rem;
-    position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 0;
+  height: 15rem;
+  position: relative;
 }
 
 #blog-post-container .hero-content .book-description {
-    position: relative;
-    z-index: 100;
-    color: white;
+  position: relative;
+  z-index: 100;
+  color: white;
 }
 
 #blog-post-container .hero-content .book-description h1 {
-    margin-top: 0;
-    font-size: 2rem;
+  margin-top: 0;
+  font-size: 2rem;
 }
 
 #blog-post-container .MuiRating-iconEmpty {
-    color: rgba(169,169,169,169)
+  color: rgba(169, 169, 169, 169);
 }
 
 #blog-post-container .hero-content .book-description .book-genre {
-    text-transform: none;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    box-shadow: none;
-    background-color: 	#606060;
-    color: white;
-    top: -0.4rem;
-    margin-left: 0.65rem;
+  text-transform: none;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  box-shadow: none;
+  background-color: #606060;
+  color: white;
+  top: -0.4rem;
+  margin-left: 0.65rem;
 }
 
 #blog-post-container .hero-content .book-thumbnail {
-    text-align: center;
-    z-index: 100;
+  text-align: center;
+  z-index: 100;
 }
 
 #blog-post-container .hero-content .book-thumbnail > img {
-    height: 14rem;
+  height: 14rem;
 }
 
 #blog-post-container .background-banner-container {
-    width: 100%;
-    height: 22rem;
-    overflow: hidden;
-    position: absolute;
-    top: 4.7rem;
+  width: 100%;
+  height: 22rem;
+  overflow: hidden;
+  position: absolute;
+  top: 4.7rem;
 }
 
 #blog-post-container .background-banner-image {
-    padding: 60px;
-    text-align: center;
-    background-size: 100%;
-    height: 100%;
-    background-position: 50%;
-    left: 0;
-    height: (100% + 80px);
-    filter: blur(10px); 
-    -webkit-filter: blur(10px);
+  padding: 60px;
+  text-align: center;
+  background-size: 100%;
+  background-position: 50%;
+  left: 0;
+  height: (100% + 80px);
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
 }
 
 #blog-post-container .background-banner-layer {
-    background-color: rgba(42,42,42,.5);
-    position: absolute;
-    top: 0;
-    left: -1rem;
-    width: 120%;
-    height: 100%;
+  background-color: rgba(42, 42, 42, 0.5);
+  position: absolute;
+  top: 0;
+  left: -1rem;
+  width: 120%;
+  height: 100%;
 }
 
 #blog-post-container .blog-post-main {
-    margin: 0 10rem;
-    font-size: 1rem;
-    font-family:  -apple-system, BlinkMacSystemFont, sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: 0.00938em;
-    color: #444444;
-    padding-top: 4rem;
+  margin: 0 10rem;
+  font-size: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #444;
+  padding-top: 4rem;
 }
 
 #blog-post-container .back-button {
-    height: 2.5rem;
-    width: 2.5rem;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    position: absolute;
-    left: 1rem;
-    top: 5.9rem;
-    z-index: 1000;
-    color: white;
-    cursor: pointer;
-  }
-
-#blog-post-container .back-button svg {
-    height: 1.8rem;
-    width: 1.8rem;
-    position: relative;
-    top: 0.3rem;
-    left: 0.3rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  left: 1rem;
+  top: 5.9rem;
+  z-index: 1000;
+  color: white;
+  cursor: pointer;
 }
 
-#blog-post-container .hero-content .book-description {
-    /* margin-top: 1.5rem; */
+#blog-post-container .back-button svg {
+  height: 1.8rem;
+  width: 1.8rem;
+  position: relative;
+  top: 0.3rem;
+  left: 0.3rem;
 }
 
 @media only screen and (max-width: 1045px) {
-    #blog-post-container .blog-post, #blog-post-container .background-banner-container {
-        height: 33rem;
-    }
+  #blog-post-container .blog-post,
+  #blog-post-container .background-banner-container {
+    height: 33rem;
+  }
 
-    #blog-post-container .hero-content .book-description {
-        padding: 0 6rem;
-    }
+  #blog-post-container .hero-content .book-description {
+    padding: 0 6rem;
+  }
 
-    #blog-post-container .hero-content .book-description h1 {
-        font-size: 1.7rem;
-    }
+  #blog-post-container .hero-content .book-description h1 {
+    font-size: 1.7rem;
+  }
 
-    #blog-post-container .hero-content .book-description h2 {
-        font-size: 1.2rem;
-    }
+  #blog-post-container .hero-content .book-description h2 {
+    font-size: 1.2rem;
+  }
 
-    #blog-post-container .blog-post-main {
-        margin: 0 3rem;
-    }
+  #blog-post-container .blog-post-main {
+    margin: 0 3rem;
+  }
 }
 
 @media only screen and (max-width: 667px) {
-    #blog-post-container .blog-post, #blog-post-container .background-banner-container {
-        height: 28rem;
-    }
+  #blog-post-container .blog-post,
+  #blog-post-container .background-banner-container {
+    height: 28rem;
+  }
 
-    #blog-post-container .hero-content .book-description {
-        padding: 0 1.5rem;
-        top: 13rem;
-        position: relative;
-    }
+  #blog-post-container .hero-content .book-description {
+    padding: 0 1.5rem;
+    top: 13rem;
+    position: relative;
+  }
 
-    #blog-post-container .hero-content .book-description h1 {
-        font-size: 1.1rem;
-    }
-    #blog-post-container .hero-content .book-description h2 {
-        font-size: 0.9rem;
-    }
+  #blog-post-container .hero-content .book-description h1 {
+    font-size: 1.1rem;
+  }
 
-    #blog-post-container .hero-content .book-thumbnail img {
-        height: 15rem;
-        position: absolute;
-        margin-left: auto;
-        margin-right: auto;
-        left: 0;
-        right: 0;
-        z-index: -1;
-    }
+  #blog-post-container .hero-content .book-description h2 {
+    font-size: 0.9rem;
+  }
 
-    #blog-post-container .book-gradient::after {
-        content:'';
-        height: 28rem;
-        width: 100%;
-        position: absolute;
-        margin-left: auto;
-        margin-right: auto;
-        left: 0;
-        top: 0;
-        display: inline-block;
-        background: linear-gradient(180deg, transparent 0,#0a0a0a 70%);
-    }
+  #blog-post-container .hero-content .book-thumbnail img {
+    height: 15rem;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  }
 
-    #blog-post-container .blog-post-main {
-        margin: 0 1.5rem;
-    }
+  #blog-post-container .book-gradient::after {
+    content: '';
+    height: 28rem;
+    width: 100%;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    background: linear-gradient(180deg, transparent 0, #0a0a0a 70%);
+  }
+
+  #blog-post-container .blog-post-main {
+    margin: 0 1.5rem;
+  }
 }
