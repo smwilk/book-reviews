@@ -16,8 +16,9 @@
     color: white;
 }
 
-#blog-post-container .hero-content .book-description .book-title {
+#blog-post-container .hero-content .book-description h1 {
     margin-top: 0;
+    font-size: 2rem;
 }
 
 #blog-post-container .hero-content .book-description .book-genre {
@@ -86,7 +87,7 @@
     border-radius: 50%;
     display: inline-block;
     position: absolute;
-    left: -1.5rem;
+    left: -1.1rem;
     top: 3rem;
     z-index: 100;
     color: white;
@@ -99,4 +100,72 @@
     position: relative;
     top: 0.3rem;
     left: 0.3rem;
+}
+
+@media only screen and (max-width: 1045px) {
+    #blog-post-container .blog-post, #blog-post-container .background-banner-container {
+        height: 33rem;
+    }
+
+    #blog-post-container .hero-content .book-description {
+        padding: 0 6rem;
+    }
+
+    #blog-post-container .hero-content .book-description h1 {
+        font-size: 1.7rem;
+    }
+
+    #blog-post-container .hero-content .book-description h2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-width: 667px) {
+    #blog-post-container .blog-post, #blog-post-container .background-banner-container {
+        height: 28rem;
+    }
+
+    #blog-post-container .hero-content .book-description {
+        padding: 0 1.5rem;
+        top: 13rem;
+        position: relative;
+    }
+
+    #blog-post-container .hero-content .book-description h1 {
+        font-size: 1.3rem;
+    }
+    #blog-post-container .hero-content .book-description h2 {
+        font-size: 0.9rem;
+    }
+
+    #blog-post-container .hero-content .book-thumbnail img {
+        height: 15rem;
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        z-index: -1;
+    }
+
+    #blog-post-container .book-gradient::after {
+        content:'';
+        height: 28rem;
+        width: 100%;
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        top: 0;
+        display: inline-block;
+        background: linear-gradient(180deg, transparent 0,#0a0a0a 70%);
+    }
+
+    #blog-post-container .blog-post-main {
+        margin: 0 1.5rem;
+    }
+
+    #blog-post-container .MuiSvgIcon-root.MuiSvgIcon-fontSizeInherit {
+        filter: drop-shadow( 1px 1px 1px rgba(255, 255, 255, 255));
+    }
 }

@@ -5,8 +5,34 @@ import Header from "./header"
 import Grid from '@material-ui/core/Grid';
 import Rating from '@material-ui/lab/Rating';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Link } from "gatsby"
 import './blogTemplate.css'
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+    button: {
+      textTransform: "none"
+    }
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 667,
+      md: 1045,
+      lg: 1280,
+      xl: 1920,
+    }
+  }
+});
 
 const Template = ({
   data, // this prop will be injected by the GraphQL query below.
@@ -15,46 +41,48 @@ const Template = ({
   const { frontmatter, html } = markdownRemark
   const foundBook = book.bookData
   return (
-    <div id="blog-post-container">
-      <Header>
-        <a href="#" class="previous round">&#8249;</a>
-      </Header>
-      <div className="blog-post">
-        <div class="hero-content">
-          <Link to="/" className="back-button">
-            <ArrowBackIcon/>
-          </Link>
-          <Grid container spacing={1}>
-            <Grid item xs={3} className="book-thumbnail">
-              <img src={foundBook.volumeInfo.imageLinks.thumbnail} alt="book-cover" class="thumbnail" />
+    <ThemeProvider theme={theme}>
+      <div id="blog-post-container">
+        <Header>
+          <a href="#" class="previous round">&#8249;</a>
+        </Header>
+        <section className="blog-post">
+          <div class="hero-content">
+            <Link to="/" className="back-button">
+              <ArrowBackIcon/>
+            </Link>
+            <Grid container spacing={1}>
+              <Grid item xs={12} md={3} className="book-thumbnail">
+                <div className="book-gradient">
+                  <img src={foundBook.volumeInfo.imageLinks.thumbnail} alt="book-cover" class="thumbnail" />
+                </div>
+              </Grid>
+              <Grid item xs={12} md={8} className="book-description">
+                <h1 className="book-title">{frontmatter.title}</h1>
+                <h2 className="book-authors">By {foundBook.volumeInfo.authors.join(", ")}</h2>
+                <Rating name="read-only" value={frontmatter.rating} readOnly />
+                <Button variant="contained" className="book-genre">{frontmatter.genre}</Button>
+              </Grid>
             </Grid>
-            <Grid item xs={8} className="book-description">
-              <h1 className="book-title">{frontmatter.title}</h1>
-              <h2 className="book-authors">By {foundBook.volumeInfo.authors.join(", ")}</h2>
-              <Rating name="read-only" value={frontmatter.rating} readOnly />
-              <Button variant="contained" className="book-genre">{frontmatter.genre}</Button>
-            </Grid>
-          </Grid>
-        </div>
-          <div className="background-banner-container">
-            <div
-              className="background-banner-image"
-              style={{backgroundImage: `url(${foundBook.volumeInfo.imageLinks.thumbnail})`}}
-            >
-              <div className="background-banner-layer" />
-            </div>
           </div>
-        <div className="blog-post-main">
+            <div className="background-banner-container">
+              <div
+                className="background-banner-image"
+                style={{backgroundImage: `url(${foundBook.volumeInfo.imageLinks.thumbnail})`}}
+              >
+                <div className="background-banner-layer" />
+              </div>
+            </div>
+        </section>
+        <main className="blog-post-main">
           <h2>{frontmatter.date}</h2>
           <div
             className="blog-post-content"
             dangerouslySetInnerHTML={{ __html: html }}
           />
-          <div>
-          </div>
-        </div>
+        </main>
       </div>
-    </div>
+    </ThemeProvider>
   )
 }
 

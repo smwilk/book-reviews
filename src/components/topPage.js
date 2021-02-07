@@ -29,6 +29,15 @@ const theme = createMuiTheme({
       textTransform: "none"
     }
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 667,
+      md: 1045,
+      lg: 1280,
+      xl: 1920,
+    }
+  }
 });
 
 export default function TopPage() {
