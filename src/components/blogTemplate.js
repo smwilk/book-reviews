@@ -43,14 +43,14 @@ const Template = ({
   return (
     <ThemeProvider theme={theme}>
       <div id="blog-post-container">
+        <Link to="/" className="back-button">
+          <ArrowBackIcon/>
+        </Link>
         <Header>
           <a href="#" class="previous round">&#8249;</a>
         </Header>
         <section className="blog-post">
           <div class="hero-content">
-            <Link to="/" className="back-button">
-              <ArrowBackIcon/>
-            </Link>
             <Grid container spacing={1}>
               <Grid item xs={12} md={3} className="book-thumbnail">
                 <div className="book-gradient">

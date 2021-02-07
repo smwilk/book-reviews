@@ -21,6 +21,10 @@
     font-size: 2rem;
 }
 
+#blog-post-container .MuiRating-iconEmpty {
+    color: rgba(169,169,169,169)
+}
+
 #blog-post-container .hero-content .book-description .book-genre {
     text-transform: none;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
@@ -87,9 +91,9 @@
     border-radius: 50%;
     display: inline-block;
     position: absolute;
-    left: -1.1rem;
-    top: 3rem;
-    z-index: 100;
+    left: 1rem;
+    top: 7.7rem;
+    z-index: 1000;
     color: white;
     cursor: pointer;
   }
@@ -117,6 +121,10 @@
 
     #blog-post-container .hero-content .book-description h2 {
         font-size: 1.2rem;
+    }
+
+    #blog-post-container .blog-post-main {
+        margin: 0 3rem;
     }
 }
 
@@ -163,9 +171,5 @@
 
     #blog-post-container .blog-post-main {
         margin: 0 1.5rem;
-    }
-
-    #blog-post-container .MuiSvgIcon-root.MuiSvgIcon-fontSizeInherit {
-        filter: drop-shadow( 1px 1px 1px rgba(255, 255, 255, 255));
     }
 }
