@@ -69,7 +69,11 @@ const Template = ({
                   By {foundBook.volumeInfo.authors.join(", ")}
                 </h2>
                 <Rating name="read-only" value={frontmatter.rating} readOnly />
-                <Button variant="contained" className="book-genre">
+                <Button
+                  variant="contained"
+                  className="book-genre"
+                  disabled
+                >
                   {frontmatter.genre}
                 </Button>
               </Grid>

@@ -8,8 +8,50 @@ body {
   max-width: 73rem;
 }
 
+/** Banner style **/
+
+#top-page .banner-container {
+    margin: 0 3rem;
+}
+
+#top-page .banner-text-container {
+    margin: 1rem;
+    font-size: 2.5rem;
+    float: left;
+    display: inline;
+    width: 60%;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #444;
+}
+
+#top-page .banner-image-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem 0;
+}
+  
+#top-page .banner-image-container img {
+    height: 18rem;
+}
+
+/** Typewriter style **/
+
+#top-page .Typewriter {
+    display: inline;
+}
+  
+  #top-page .Typewriter .Typewriter__wrapper {
+    color: #8bc34a;
+}
+
+/** Top page main component style **/
+
 #top-page .top-page-container {
   padding-top: 2rem;
+}
+
+#top-page .card-inner-container {
+    height: 100%;
 }
 
 #top-page .book-cover img {
@@ -17,6 +59,10 @@ body {
   height: 16.25rem;
   border-radius: 5%;
   object-fit: contain;
+}
+
+#top-page .link-to-review {
+    text-decoration: none;
 }
 
 #top-page .review-text p {
@@ -34,59 +80,26 @@ body {
   color: #257517;
 }
 
-#top-page .card-inner-container {
-  height: 100%;
-}
+/** Card divider style **/
 
-#top-page .link-to-review {
-  text-decoration: none;
-}
+#top-page .card-divider {
+    margin: 0.5rem;
+    height: 0.1rem;
+  }
+
+/** Genre button style**/
 
 #top-page .MuiTabs-flexContainer {
   color: #444;
   background-color: #f5f6f5;
 }
 
+/** Selected genre indicator style**/
+
 #top-page .MuiTabs-indicator {
   background-color: #c0dead;
 }
 
-#top-page .card-divider {
-  margin: 0.5rem;
-  height: 0.1rem;
-}
-
-#top-page .banner-container {
-  margin: 0 3rem;
-}
-
-#top-page .banner-image-container {
-  display: flex;
-  justify-content: flex-end;
-  margin: 1rem 0;
-}
-
-#top-page .banner-image-container img {
-  height: 18rem;
-}
-
-#top-page .banner-text-container {
-  margin: 1rem;
-  font-size: 2.5rem;
-  float: left;
-  display: inline;
-  width: 60%;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  color: #444;
-}
-
-#top-page .Typewriter {
-  display: inline;
-}
-
-#top-page .Typewriter .Typewriter__wrapper {
-  color: #8bc34a;
-}
 
 @media only screen and (max-width: 1056px) {
   #top-page .banner-image-container {

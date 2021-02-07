@@ -223,7 +223,7 @@ export default function TopPage() {
                             <Link
                               to={
                                 "/books/" +
-                                data.bookshelf.bookShelfData[index].isbn +
+                                node.frontmatter.isbn +
                                 "/"
                               }
                               className="link-to-review"
