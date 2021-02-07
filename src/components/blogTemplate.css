@@ -92,7 +92,7 @@
     display: inline-block;
     position: absolute;
     left: 1rem;
-    top: 7.7rem;
+    top: 5.9rem;
     z-index: 1000;
     color: white;
     cursor: pointer;
@@ -104,6 +104,10 @@
     position: relative;
     top: 0.3rem;
     left: 0.3rem;
+}
+
+#blog-post-container .hero-content .book-description {
+    /* margin-top: 1.5rem; */
 }
 
 @media only screen and (max-width: 1045px) {
@@ -140,7 +144,7 @@
     }
 
     #blog-post-container .hero-content .book-description h1 {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
     #blog-post-container .hero-content .book-description h2 {
         font-size: 0.9rem;

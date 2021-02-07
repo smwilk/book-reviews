@@ -2,7 +2,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import './header.css'
-import BrushIcon from '@material-ui/icons/Brush';
+import BrushIcon from '@material-ui/icons/Brush'
 
 const Header = () => (
   <header>

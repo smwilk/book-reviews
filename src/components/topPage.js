@@ -1,19 +1,19 @@
 import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
-import Divider from '@material-ui/core/Divider';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Rating from '@material-ui/lab/Rating';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typewriter from 'typewriter-effect';
+import Divider from '@material-ui/core/Divider'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import Rating from '@material-ui/lab/Rating'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
+import Typewriter from 'typewriter-effect'
 import './topPage.css'
 
-const readingTime = require('../images/reading-time.svg');
+const readingTime = require('../images/reading-time.svg')
 
 const theme = createMuiTheme({
   typography: {
@@ -38,14 +38,14 @@ const theme = createMuiTheme({
       xl: 1920,
     }
   }
-});
+})
 
 export default function TopPage() {
-  const [ value, setValue ] = useState(0);
-  const [ selectedGenre, setGenre ] = useState("All");
+  const [ value, setValue ] = useState(0)
+  const [ selectedGenre, setGenre ] = useState("All")
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
   // query for book data from Google Books API
   const data = useStaticQuery(graphql`
     query MyQuery {
@@ -93,7 +93,7 @@ export default function TopPage() {
   `)
 
   const genreMap = new Set()
-  data.allMarkdownRemark.nodes.forEach((node, index) => {
+  data.allMarkdownRemark.nodes.forEach((node) => {
     genreMap.add(node.frontmatter.genre)
   })
   const genreArr = ["All", ...genreMap]
@@ -112,58 +112,63 @@ export default function TopPage() {
   
   const filteredData = selectedGenre === "All" ? data.allMarkdownRemark.nodes : data.allMarkdownRemark.nodes.filter(node => node.frontmatter.genre === selectedGenre)
   return (
-  <ThemeProvider theme={theme}>
-    <div id="top-page">
-      <div className="banner-container">
-        <div className="banner-text-container">
-          <div>Hello! My name is Minami.</div>
-          <div>I read books about</div>
-          <Typewriter
-            className="type-writer"
-            options={{
-              strings: ['Technology', 'History', 'Science', 'Nutrition', 'Philosophy'],
-              autoStart: true,
-              loop: true
-            }}
-          />
+    <ThemeProvider theme={theme}>
+      <div id="top-page">
+        <div className="banner-container">
+          <div className="banner-text-container">
+            <div>Hello! My name is Minami.</div>
+            <div>I read books about</div>
+            <Typewriter
+              className="type-writer"
+              options={{
+                strings: ['Technology', 'History', 'Science', 'Nutrition', 'Philosophy'],
+                autoStart: true,
+                loop: true
+              }}
+            />
+          </div>
+          <div className="banner-image-container">
+            <img src={readingTime} alt="reading-woman"/>
+          </div>
         </div>
-        <div className="banner-image-container">
-          <img src={readingTime} alt="reading-woman"/>
-        </div>
-      </div>
-      <Tabs 
-        value={value}
-        onChange={handleChange}
-        aria-label="simple tabs example"
-        indicatorColor="primary"
-      >
-        {genreArr.map((genre, index) => {
-          return (
-          <Tab
-            label={genre}
-            key={index}
-            onClick={() => filterByGenre(genre)}
-          />
-          )
-        })}
-      </Tabs>
-      <Container maxWidth="lg" className="top-page-container">
-        <div className="card-container">
-          <Grid container>
-            {filteredData.map((node, index) => {
-              const matchingBookApiData = data.bookshelf.bookShelfData.find(book => book.isbn === node.frontmatter.isbn).volumeInfo
-              const truncatedReviewText = truncateText(node.html, 200)
-              return(              
-                <Grid item sm={12} md={6} key={index}>
+        <Tabs 
+          value={value}
+          onChange={handleChange}
+          aria-label="simple tabs example"
+          indicatorColor="primary"
+        >
+          {genreArr.map((genre, index) => {
+            return (
+              <Tab
+                label={genre}
+                key={index}
+                onClick={() => filterByGenre(genre)}
+              />
+            )
+          })}
+        </Tabs>
+        <Container maxWidth="lg" className="top-page-container">
+          <div className="card-container">
+            <Grid container>
+              {filteredData.map((node, index) => {
+                const matchingBookApiData = data.bookshelf.bookShelfData.find(book => book.isbn === node.frontmatter.isbn).volumeInfo
+                const truncatedReviewText = truncateText(node.html, 200)
+                return(              
+                  <Grid item sm={12} md={6} key={index}>
                     <div className="card-inner-container">
                       <Grid container spacing={2}>
                         <Grid item xs={4} className="book-cover">
-                        <Link to={"/books/" + data.bookshelf.bookShelfData[index].isbn + "/"} className="link-to-review">
-                          <img src={matchingBookApiData.imageLinks.thumbnail} alt="Book cover"/>
-                        </Link>
+                          <Link to={"/books/" + data.bookshelf.bookShelfData[index].isbn + "/"} className="link-to-review">
+                            <img src={matchingBookApiData.imageLinks.thumbnail} alt="Book cover"/>
+                          </Link>
                         </Grid>
                         <Grid item xs={6} className="card-text-container">
-                          <Button variant="outlined">{node.frontmatter.genre}</Button>
+                          <Button
+                            variant="outlined"
+                            onClick={() => filterByGenre(node.frontmatter.genre)}
+                          >
+                            {node.frontmatter.genre}
+                          </Button>
                           <Typography className="card-title" color="textSecondary" gutterBottom>
                           </Typography>
                           <Typography variant="h5" component="h2">
@@ -178,22 +183,22 @@ export default function TopPage() {
                               className="blog-post-content"
                               dangerouslySetInnerHTML={{ __html: truncatedReviewText }}
                             />
-                              <Link to={"/books/" + data.bookshelf.bookShelfData[index].isbn + "/"} className="link-to-review">
-                                <div className="read-more-button">Read full review</div>
-                              </Link>
+                            <Link to={"/books/" + data.bookshelf.bookShelfData[index].isbn + "/"} className="link-to-review">
+                              <div className="read-more-button">Read full review</div>
+                            </Link>
                           </div>
                         </Grid>
                       </Grid>
-                  </div>
-                  <Divider light className="card-divider" />
-                </Grid>
+                    </div>
+                    <Divider light className="card-divider" />
+                  </Grid>
                 )
               })
-            }
-          </Grid>
-        </div>
-      </Container>
-      <br />
+              }
+            </Grid>
+          </div>
+        </Container>
+        <br />
       </div>
     </ThemeProvider>
   )

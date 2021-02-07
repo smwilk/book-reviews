@@ -1,7 +1,7 @@
 import React from "react"
 
-import TopPage from "../components/topPage";
-import Header from "../components/header";
+import TopPage from "../components/topPage"
+import Header from "../components/header"
 
 import "./global.css"
 
