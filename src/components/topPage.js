@@ -121,7 +121,8 @@ export default function TopPage() {
       <div id="top-page">
         <div className="banner-container">
           <div className="banner-text-container">
-            <div>Hello! My name is Minami.</div>
+            <div>Personal book reviews by<div>
+            </div>Minami Nakajima.</div>
             <div>I read books about</div>
             <Typewriter
               className="type-writer"
