@@ -165,7 +165,8 @@ export default function TopPage() {
                 const matchingBookApiData = data.bookshelf.bookShelfData.find(
                   (book) => book.isbn === node.frontmatter.isbn
                 ).volumeInfo
-                const truncatedReviewText = truncateText(node.html, 180)
+                let strippedText = node.html.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, '')
+                const truncatedReviewText = truncateText(strippedText, 180)
                 return (
                   <Grid item sm={12} md={6} key={index}>
                     <div className="card-inner-container">
