@@ -15,43 +15,43 @@ body {
 }
 
 #top-page .banner-text-container {
-    margin: 1rem;
-    font-size: 2.5rem;
-    float: left;
-    display: inline;
-    width: 60%;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #444;
+  margin: 1rem;
+  font-size: 2.5rem;
+  float: left;
+  display: inline;
+  width: 60%;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #444;
 }
 
 #top-page .banner-image-container {
-    display: flex;
-    justify-content: flex-end;
-    margin: 1rem 0;
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 0;
 }
   
 #top-page .banner-image-container img {
-    height: 18rem;
+  height: 18rem;
 }
 
 /** Typewriter style **/
 
 #top-page .Typewriter {
-    display: inline;
+  display: inline;
 }
   
-  #top-page .Typewriter .Typewriter__wrapper {
-    color: #8bc34a;
+#top-page .Typewriter .Typewriter__wrapper {
+  color: #8bc34a;
 }
 
 /** Top page main component style **/
 
 #top-page .top-page-container {
-  padding-top: 2rem;
+  padding: 2rem;
 }
 
 #top-page .card-inner-container {
-    height: 100%;
+  height: 100%;
 }
 
 #top-page .card-inner-container .MuiGrid-spacing-xs-2 {
@@ -66,7 +66,7 @@ body {
 }
 
 #top-page .link-to-review {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 #top-page .review-text p {
@@ -87,9 +87,9 @@ body {
 /** Card divider style **/
 
 #top-page .card-divider {
-    margin: 0.5rem;
-    height: 0.1rem;
-  }
+  margin: 0.5rem;
+  height: 0.1rem;
+}
 
 /** Genre button style**/
 
@@ -106,6 +106,10 @@ body {
 
 
 @media only screen and (max-width: 1056px) {
+  #top-page .top-page-container {
+    padding: 0.5em;
+  }
+
   #top-page .banner-image-container {
     display: block;
     text-align: center;
