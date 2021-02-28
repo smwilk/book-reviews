@@ -17,7 +17,7 @@ Before reading this book, there were many gaps in my knowledge of the full histo
 
 The author takes us through the history of human development, through Cognitive Revolution to Agricultural Revolution. He explains why many concepts, such as religion, economics, politics and human rights were created, and how they evolved to be what we know today.
 
-Harari emphasizes the factors setting homo sapiens apart from other species, such as the ability to create imaginative concepts and work towards a unique goal as a group. While this left me with a positive feeling about many achievements attiributed to homo sapiens, Harari highlights many negative practices that homo sapiens have developed. He also touches on the future outlook of the humankind, which leads into another book written by the author, Homo Deus.
+Harari emphasizes the factors setting homo sapiens apart from other species, such as the ability to create imaginative concepts and work towards a unique goal as a group. While this left me with a positive feeling about many achievements attributed to homo sapiens, Harari highlights many negative practices that homo sapiens have developed. He also touches on the future outlook of the humankind, which leads into another book written by the author, Homo Deus.
 
 The book encourages the reader to think about the future, and asks of us:
 

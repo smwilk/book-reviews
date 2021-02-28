@@ -59,9 +59,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         return result.json()
       })
     )
-
     // transfrom the books API data, add isbn for convenience
     const resultData = fetchBookResults.map((result, i) => {
+      // Handle google books fetch volumes returning no results
+      if (result.totalItems === 0) {
+        throw new Error('Google books API could not find book')
+      }
       return {
         ...result.items[0], isbn: allMarkdownRemarks[i].frontmatter.isbn
       }
