@@ -41,11 +41,7 @@ const theme = createMuiTheme({
 })
 
 export default function TopPage() {
-  const [value, setValue] = useState(0)
   const [selectedGenre, setGenre] = useState("All")
-  const handleChange = (event, newValue) => {
-    setValue(newValue)
-  }
   // query for book data from Google Books API
   const data = useStaticQuery(graphql`
     query MyQuery {
@@ -106,10 +102,6 @@ export default function TopPage() {
     return text
   }
 
-  function filterByGenre(genre) {
-    setGenre(genre)
-  }
-
   const filteredData =
     selectedGenre === "All"
       ? data.allMarkdownRemark.nodes
@@ -144,8 +136,7 @@ export default function TopPage() {
           </div>
         </div>
         <Tabs
-          value={value}
-          onChange={handleChange}
+          value={genreArr.indexOf(selectedGenre)}
           aria-label="simple tabs example"
           indicatorColor="primary"
         >
@@ -154,7 +145,7 @@ export default function TopPage() {
               <Tab
                 label={genre}
                 key={index}
-                onClick={() => filterByGenre(genre)}
+                onClick={() => setGenre(genre)}
               />
             )
           })}
@@ -191,7 +182,7 @@ export default function TopPage() {
                           <Button
                             variant="outlined"
                             onClick={() =>
-                              filterByGenre(node.frontmatter.genre)
+                              setGenre(node.frontmatter.genre)
                             }
                           >
                             {node.frontmatter.genre}
