@@ -39,6 +39,7 @@ const Template = ({
 }) => {
   const { markdownRemark, book } = data // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark
+  if (!book) return null
   const foundBook = book.bookData
   return (
     <ThemeProvider theme={theme}>
