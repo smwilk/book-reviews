@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Container from "@material-ui/core/Container"
@@ -12,8 +13,6 @@ import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
 import Typewriter from "typewriter-effect"
 import "./topPage.css"
-
-const readingTime = require("../images/reading-time.svg")
 
 const theme = createMuiTheme({
   typography: {
@@ -132,7 +131,7 @@ export default function TopPage() {
             />
           </div>
           <div className="banner-image-container">
-            <img src={readingTime} alt="reading-woman" />
+            <StaticImage src="../images/reading-time.svg" alt="reading woman" />
           </div>
         </div>
         <Tabs

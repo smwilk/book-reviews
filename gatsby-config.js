@@ -15,12 +15,8 @@ module.exports = {
       `gatsby-transformer-remark`,
       `gatsby-plugin-react-helmet`,
       `gatsby-plugin-material-ui`,
-      {
-        resolve: `gatsby-source-filesystem`,
-        options: {
-          name: `images`,
-          path: `${__dirname}/src/images`,
-        },
-      }
+      `gatsby-plugin-postcss`,
+      `gatsby-plugin-image`,
+      `gatsby-plugin-sharp`
     ],
   }
