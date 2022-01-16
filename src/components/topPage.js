@@ -131,7 +131,7 @@ export default function TopPage() {
             />
           </div>
           <div className="banner-image-container">
-            <StaticImage src="../images/reading-time.svg" alt="reading woman" />
+            <StaticImage src="../images/reading-time.svg" placeholder="none" alt="reading woman" />
           </div>
         </div>
         <Tabs
