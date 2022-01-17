@@ -155,7 +155,10 @@ export default function TopPage() {
               {filteredData.map((node, index) => {
                 const matchingBookApiData = data.bookshelf.bookShelfData.find(
                   (book) => book.isbn === node.frontmatter.isbn
-                ).volumeInfo
+                )?.volumeInfo
+                if (!matchingBookApiData) {
+                  return null
+                } 
                 let strippedText = node.html.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, '')
                 const truncatedReviewText = truncateText(strippedText, 180)
                 return (
